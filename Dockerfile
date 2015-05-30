@@ -3,7 +3,8 @@ FROM ubuntu:14.04
 ADD install.sh install.sh
 RUN ./install.sh
 
-USER znc
+RUN     useradd -m znc
+USER    znc
 WORKDIR /home/znc
 
 EXPOSE      6667
