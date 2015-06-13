@@ -39,7 +39,10 @@ docker run --rm --read-only --volumes-from znc-data -p 6667:6667 -ti zimbatm/znc
 ```
 
 ### Finally install the upstart script
-cat <<UPSTART > /etc/init/znc.conf
+
+Copy to /etc/init/znc.conf
+
+```
 description     "ZNC"
 start on runlevel [2345]
 stop on runlevel [!2345]
@@ -50,10 +53,9 @@ console log
 
 pre-start exec /usr/bin/docker pull zimbatm/znc
 exec /usr/bin/docker run --rm --read-only --volumes-from znc-data -p 6667:6667 zimbatm/znc
-UPSTART
-
-start znc
 ```
+
+`start znc`
 
 Enjoy !
 
